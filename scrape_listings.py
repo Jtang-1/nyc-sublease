@@ -34,15 +34,21 @@ def parse_date(date_str: str) -> Optional[datetime]:
 
 def check_availability_overlap(start_str: str, end_str: str,
                                target_start: datetime, target_end: datetime) -> bool:
-    """Check if listing availability overlaps with target dates."""
+    """Check if listing availability fully covers the target date range.
+
+    Returns True only if the listing is available for the ENTIRE target period.
+    Listing must start on or before target_start AND end on or after target_end.
+    """
     listing_start = parse_date(start_str)
     listing_end = parse_date(end_str)
 
     if not listing_start or not listing_end:
         return False
 
-    # Check if date ranges overlap
-    return listing_start <= target_end and listing_end >= target_start
+    # Listing must fully contain the target period
+    # listing_start <= target_start: listing starts before or on target start
+    # listing_end >= target_end: listing ends after or on target end
+    return listing_start <= target_start and listing_end >= target_end
 
 
 def fetch_transportation_info(listing_url: str) -> str:

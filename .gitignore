@@ -3,3 +3,8 @@ matching_listings.txt
 
 # Exclude generated map
 listings_map.html
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
