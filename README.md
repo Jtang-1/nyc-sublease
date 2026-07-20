@@ -55,12 +55,6 @@ Scrapes listingsproject.com for NYC sublets matching your criteria.
 python3 scrape_listings.py
 ```
 
-**Requirements:**
-```bash
-pip3 install selenium beautifulsoup4
-brew install chromedriver
-```
-
 **Customize dates:**
 Edit lines 150-151 in the script:
 ```python
@@ -92,8 +86,6 @@ This will:
 2. Geocode all locations (takes ~1 minute)
 3. Generate `listings_map.html`
 4. Open it in your browser to view the interactive map
-
-**No installation required** - uses only Python standard library!
 
 ---
 
@@ -211,9 +203,9 @@ Add custom marker icons using Leaflet marker options
 
 ## Troubleshooting
 
-**"ModuleNotFoundError: No module named 'selenium'"**
+**"ModuleNotFoundError: No module named 'selenium'" or other import errors**
 ```bash
-pip3 install selenium beautifulsoup4
+pip install -r requirements.txt
 ```
 
 **"chromedriver: command not found"**
