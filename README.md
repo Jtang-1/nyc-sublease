@@ -2,6 +2,45 @@
 
 Two Python scripts to scrape NYC short-term sublet listings and visualize them on an interactive map.
 
+## Quick Start (One Command!)
+
+```bash
+# 1. Install dependencies first (one-time setup)
+pip install -r requirements.txt
+brew install chromedriver  # macOS only
+
+# 2. Run the complete pipeline
+python3 run_listings_pipeline.py
+```
+
+This single command will:
+1. Scrape all listings matching your dates (~2 minutes)
+2. Generate the interactive map (~1 minute)
+3. Automatically open the map in your browser
+
+**That's it!** The `listings_map.html` file will be ready to view.
+
+---
+
+## Customize Your Search Dates
+
+Before running the scraper, edit `config.py` to set your target dates:
+
+```python
+TARGET_START_DATE = datetime(2026, 10, 4)   # Your start date
+TARGET_END_DATE = datetime(2026, 10, 19)    # Your end date
+```
+
+You can also customize:
+```python
+ALLOWED_PRICE_TYPES = ['day', 'week']       # Add 'month' if needed
+MAX_PAGES = 40                              # Number of pages to scrape
+```
+
+**Note:** The scraper only finds listings that are available for your **entire** date range.
+
+---
+
 ## Installation
 
 ```bash
@@ -88,21 +127,6 @@ This will:
 2. Geocode all locations (takes ~1 minute)
 3. Generate `listings_map.html`
 4. Open it in your browser to view the interactive map
-
----
-
-## Quick Start (One Command!)
-
-```bash
-python3 run_listings_pipeline.py
-```
-
-This single command will:
-1. Scrape all listings (~2 minutes)
-2. Generate the interactive map (~1 minute)
-3. Automatically open the map in your browser
-
-**That's it!** The `listings_map.html` file will be ready to view.
 
 ---
 
