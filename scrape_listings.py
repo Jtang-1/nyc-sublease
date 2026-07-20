@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-Scrape Listings Project for short-term NYC sublets available Oct 4-19, 2026
+Scrape Listings Project for short-term NYC sublets.
 Filters for listings with /day or /week pricing that overlap with target dates.
 Uses Selenium to handle JavaScript-rendered content.
+
+Configuration: Edit config.py to change target dates and search parameters.
 """
 
 from selenium import webdriver
@@ -17,6 +19,9 @@ from typing import List, Dict, Optional
 import re
 import time
 import urllib.request
+
+# Import configuration
+from config import TARGET_START_DATE, TARGET_END_DATE, MAX_PAGES, ALLOWED_PRICE_TYPES
 
 
 def parse_date(date_str: str) -> Optional[datetime]:
@@ -171,8 +176,8 @@ def scrape_page(driver, page_num: int, target_start: datetime, target_end: datet
 
                 price_type = price_match.group(1).lower()
 
-                # Filter: only day or week pricing
-                if price_type not in ['day', 'week']:
+                # Filter: only allowed price types (configured in config.py)
+                if price_type not in ALLOWED_PRICE_TYPES:
                     continue
 
                 # Extract dates
@@ -256,14 +261,14 @@ def load_existing_listings(filename: str = "matching_listings.txt") -> set:
 
 def main():
     """Main scraping function."""
-    # Target dates: October 4-19, 2026
-    target_start = datetime(2026, 10, 4)
-    target_end = datetime(2026, 10, 19)
+    # Use dates from config.py
+    target_start = TARGET_START_DATE
+    target_end = TARGET_END_DATE
 
     print("=" * 80)
     print("Scraping Listings Project for Short-Term NYC Sublets")
     print(f"Target dates: {target_start.strftime('%B %d, %Y')} - {target_end.strftime('%B %d, %Y')}")
-    print("Looking for: /day or /week pricing")
+    print(f"Looking for: {', '.join(['/' + pt for pt in ALLOWED_PRICE_TYPES])} pricing")
     print("=" * 80)
     print()
 
@@ -279,10 +284,9 @@ def main():
         driver = get_driver()
 
         # Scrape pages until we reach the end or max pages
-        max_pages = 40  # Maximum pages to try
         page_num = 1
 
-        while page_num <= max_pages:
+        while page_num <= MAX_PAGES:
             matches, has_more = scrape_page(driver, page_num, target_start, target_end)
             all_matching.extend(matches)
 

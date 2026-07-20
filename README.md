@@ -55,11 +55,13 @@ Scrapes listingsproject.com for NYC sublets matching your criteria.
 python3 scrape_listings.py
 ```
 
-**Customize dates:**
-Edit lines 150-151 in the script:
+**Customize search parameters:**
+Edit `config.py` to change your search:
 ```python
-target_start = datetime(2026, 10, 4)  # Your start date
-target_end = datetime(2026, 10, 19)   # Your end date
+TARGET_START_DATE = datetime(2026, 10, 4)   # Your start date
+TARGET_END_DATE = datetime(2026, 10, 19)    # Your end date
+ALLOWED_PRICE_TYPES = ['day', 'week']       # Add 'month' if needed
+MAX_PAGES = 40                              # Number of pages to scrape
 ```
 
 ---
@@ -157,23 +159,22 @@ open listings_map.html
 
 ### Change Search Parameters
 
-Edit `scrape_listings.py`:
+Edit `config.py` - all main search parameters are in one place:
 
 **Date range:**
 ```python
-target_start = datetime(2026, 10, 4)
-target_end = datetime(2026, 10, 19)
+TARGET_START_DATE = datetime(2026, 10, 4)
+TARGET_END_DATE = datetime(2026, 10, 19)
 ```
 
-**Price types (add /month):**
+**Price types:**
 ```python
-if price_type not in ['day', 'week', 'month']:  # Add 'month'
-    continue
+ALLOWED_PRICE_TYPES = ['day', 'week', 'month']  # Add or remove as needed
 ```
 
 **Number of pages:**
 ```python
-max_pages = 40  # Increase or decrease
+MAX_PAGES = 40  # Increase or decrease
 ```
 
 ### Customize Map Appearance
