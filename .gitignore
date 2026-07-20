@@ -1,2 +1,5 @@
 # Exclude matching listings output
 matching_listings.txt
+
+# Exclude generated map
+listings_map.html
