@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Sublet Listings Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        #header {
+            background: #1e293b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #header p {
+            margin: 5px 0 0 0;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        #map {
+            width: 100%;
+            height: calc(100vh - 100px);
+        }
+
+        .leaflet-popup-content {
+            margin: 15px;
+        }
+
+        .leaflet-popup-content h3 {
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>🗽 NYC Short-Term Sublets Map</h1>
+        <p>October 4-19, 2026 • 12 listings total</p>
+        <div style="margin-top: 10px; font-size: 13px;">
+            <span style="margin-right: 20px;">🟢 <strong>8</strong> New</span>
+            <span>🔵 <strong>4</strong> Existing</span>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        // Initialize map centered on NYC
+        const map = L.map('map').setView([40.688777, -73.97087065], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers
+        
+        var icon4421727872 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6942696, -73.9187482], {icon: icon4421727872})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Owners Personal Furnished Apt, 1Bedr, luminous & good vibes!</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $125/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> September 16, 2026 - January 16, 2027</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Bushwick, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">L train</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/owners-personal-furnished-apt-1bedr-luminous-good-vibes" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421791232 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6829954, -73.9406121], {icon: icon4421791232})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Beautiful One Bed (easily 2 bed) w Backyard in Bedstuy Brownstone</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $140/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> August 1, 2026 - December 28, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Bedstuy, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">M & J Trains at Broadway Lafayette</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/beautiful-one-bed-easily-2-bed-w-backyard-in-bedstuy-brownstone-3a3466a3-1181-42fa-a513-e45ef0ee7e1a" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421697472 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6615932, -73.9971741], {icon: icon4421697472})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Furnished 1BR South Slope with Private Balcony, City + Statue of Liberty Views</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $180/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 24, 2026 - October 10, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Park Slope, South Slope, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">R line across the bldg & F, G lines close walk</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/furnished-1br-south-slope-with-private-balcony-city-statue-of-liberty-views" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421707648 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.714622, -73.95345], {icon: icon4421707648})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">1 BEDROOM IN PRIME WILLIAMSBURG W/PRIVATE BACKYARD & BALCONY // AVAILABLE JULY 15th - DECEMBER 1ST  - FLEXIBLE END DATE</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $1,225/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 15, 2026 - December 15, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Williamsburg, BROOKLYN</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">8 minute walk to Bedford L, 13 minute walk to Marcy JMZ</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/1-bedroom-in-prime-williamsburg-w-private-backyard-balcony-available-july-15th-december-1st-flexible-end-date" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421789376 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6701033, -73.9859723], {icon: icon4421789376})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Beautiful Park Slope Apartment</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $325/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 15, 2026 - December 25, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Park Slope, Brooklyn</p>
+            
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/beautiful-park-slope-apartment-8073b5f0-f903-42a1-b550-0fcc721f03c6" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421790976 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.7372829, -73.9973595], {icon: icon4421790976})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">West Village Charmer: Fully Stocked 1BR On Historic Street w/ Rooftop, Laundry, All-Inclusive, Pet-Friendly, No Security Deposit</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $1,875/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 30, 2026 - October 31, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> The West Village, New York</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">ACEBDFM-West 4th St. (2 min 0.1 miles);  1, 2, 3 Trains Christopher St. (< 5 min- 0.2mi), L, N, Q, R, W, 4, 5, 6  Trains at West 14th Union Square (0.8 mile walk); Citibike at Carmine St. (1 block up)</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/west-village-charmer-fully-stocked-1br-on-historic-street-w-rooftop-laundry-all-inclusive-pet-friendly-no-security-deposit-1650e4cd-17ee-49ce-8e0b-58ae3ac251bb" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421709184 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6829954, -73.9406121], {icon: icon4421709184})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Light-Filled 1,200 sq ft Designer 2-Bedroom Brooklyn Home with Private Patio</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $250/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 31, 2026 - February 28, 2027</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Bedstuy, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">A/C and J trains</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/spacious-bedstuy-brooklyn-retreat-bi-level-1-200-sq-ft-outdoor-patio-400221" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4425788224 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6751032, -74.0095841], {icon: icon4425788224})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #10b981; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">🆕 NEW</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">2-BDRM Red Hook Loft w/ Private Terrace (1400 sqft | available nightly, weekly or monthly)</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $1,850/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 19, 2026 - August 31, 2027</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Red Hook, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">NYC Ferry, F/G trains, Citi-bike, Uber/Lyft, Free street parking for car</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/2-bdrm-red-hook-loft-w-private-terrace-1400-sqft-available-nightly-weekly-or-monthly-8829723b-1091-4591-a683-392eb6d8e116" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4425788416 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6897222, -73.9652778], {icon: icon4425788416})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">♻️ EXISTING</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Modern, Spacious, and Clean 2 Bedroom Apt in Clinton Hill with Giant Windows!</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $950/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> October 9, 2026 - October 31, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Clinton Hill, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">2 min walk to C train, 10 mins to G, 12 mins to Barclays</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/modern-spacious-and-clean-2-bedroom-apt-in-clinton-hill-with-giant-windows-11d586b7-1ea8-4458-be06-35bc1e5124be" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4421796032 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6834364, -73.9412488], {icon: icon4421796032})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">♻️ EXISTING</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Sunny Clean Studio Apartment with Washer/Dryer</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $800/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 25, 2026 - November 25, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> bed stuy, brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">C and A train. Buses on the same block.</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/sunny-clean-studio-apartment-with-washer-dryer-60bf6b7b-0add-44f8-b2c7-190e1d1f1d15" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4425788736 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.6604004, -73.9944088], {icon: icon4425788736})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">♻️ EXISTING</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Minimal, Modern, Furnished South Slope 1bdr Nook for sublet</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $1,300/week</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 14, 2026 - December 31, 2026</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> South Slope, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">R/F/G</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/minimal-modern-furnished-south-slope-1bdr-nook-for-sublet-b06f82c4-e35d-40e2-91ea-f99d6e022935" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+
+        var icon4425788992 = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background-color: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([40.7128, -74.006], {icon: icon4425788992})
+            .addTo(map)
+            .bindPopup(`
+        <div style="min-width: 280px; max-width: 350px;">
+            <span style="display: inline-block; background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px;">♻️ EXISTING</span>
+            <h3 style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.4;">Beautiful, sun drenched, furnished 2BR in prime Cobble Hill for short term stays</h3>
+            <p style="margin: 5px 0;"><strong>💰 Price:</strong> $300/day</p>
+            <p style="margin: 5px 0;"><strong>📅 Available:</strong> July 24, 2026 - March 1, 2027</p>
+            <p style="margin: 5px 0;"><strong>📍 Location:</strong> Cobble Hill, Boerum Hill, Carroll Gardens, Brooklyn</p>
+            <p style="margin: 10px 0 0 0; padding-top: 8px; border-top: 1px solid #e5e7eb;"><strong>🚇 Transportation:</strong></p><p style="margin: 5px 0; font-size: 13px; color: #374151;">Steps away from Bergen F/G; <10 mins walk to 2/3/4/5/A/C/R</p>
+            <p style="margin: 12px 0 0 0;">
+                <a href="https://www.listingsproject.com/listings/beautiful-sun-drenched-furnished-2br-in-prime-cobble-hill-for-short-term-stays-d32bc90f-1540-4b23-b2b1-281f7ea1aa9a" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">
+                    View Full Listing →
+                </a>
+            </p>
+        </div>
+        `);
+        
+    </script>
+</body>
+</html>
