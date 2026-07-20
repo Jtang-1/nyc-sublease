@@ -2,6 +2,25 @@
 
 Two Python scripts to scrape NYC short-term sublet listings and visualize them on an interactive map.
 
+## Installation
+
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install ChromeDriver (macOS)
+brew install chromedriver
+
+# Or download manually from: https://chromedriver.chromium.org/
+```
+
+**Requirements:**
+- Python 3.8+
+- Chrome browser
+- ChromeDriver
+
+---
+
 ## Scripts
 
 ### 0. `run_listings_pipeline.py` - Orchestrator (⭐ Start Here!)
